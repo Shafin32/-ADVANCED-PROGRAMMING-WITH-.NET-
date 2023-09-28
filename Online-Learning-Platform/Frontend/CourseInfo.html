@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<script>
+		var app = angular.module('myApp', []);
+
+		app.controller('myCtrl', function($scope, $http) {
+		  $http.get("https://localhost:44350/api/get/course/1")
+		  .then(function(response) {
+		      $scope.obj = response.data;
+		  },function(err){});
+		});
+		
+		</script>
+	</head>
+<body>
+	<div ng-app="myApp" ng-controller="myCtrl"> 
+		<h1>Course Id: {{obj.id}}</h1>
+		<h1>Tittle: {{obj.title}}</h1>
+		<h1>Created: {{obj.created}}</h1>
+		<h1>Description: {{obj.description}}</h1>
+		<h1>Teacher Id: {{obj.tid}}</h1>
+
+	</div>
+</body>
+</html>
